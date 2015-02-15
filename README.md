@@ -1,5 +1,4 @@
-# mlh-api
-##Unofficial Major Leauge Hacking API
+#Unofficial Major Leauge Hacking API
 
 Welcome to the Unoffical MLH API. This is not the offical API used by MLH, but simply one I made a CodeDay Winter 2015.
 The API is a simple REST made in Flask that utilizes BeautifulSoup. The API pulls data from MLH website depending on the season you specify in the URL.
