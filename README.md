@@ -18,12 +18,12 @@ The following example is for `event/dragon%20hacks/` is selected.
   },
   ```
   You can also select individual querys of hackathons such as the `link` or `id` using the url mapping `/search/name_of_hackathon/value`. For example `search/dragon%20hacks/date` would return  
-  ``` json
+  ``` text
   January 10th - 11th
  ```
  
  or `search/dragon%20hacks/link` would return  
- ``` json
+ ``` text
  http://www.hack-dragon.com
  ```
   
