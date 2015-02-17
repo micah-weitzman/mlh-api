@@ -1,11 +1,12 @@
 #Unofficial Major Leauge Hacking API
 
 Welcome to the Unoffical MLH API. This is not the offical API used by MLH, but simply one I made a CodeDay Winter 2015.
-The API is a simple REST made in Flask that utilizes BeautifulSoup. The API pulls data from MLH website depending on the season you specify in the URL.
-Currently `s2015` maps to the United States events and `2015-eu` to the European version. 
+The API is a simple REST made in Flask that utilizes BeautifulSoup. It scrapes information of of [mlh.io](http://mlh.io) and returns it in a neat JSON format. 
+
+The index returns all the events for the current seasons, both in Europe and the US. Appending `s2015` for the current US season, and `eu-2015` for the European, provides all the information for its location respectively. 
 
 The app returns basic information about each event including the offical id, data, link, location, and name.  
-The following example is the first element if `event/dragon%20hacks/` is selected. 
+The following example is for `event/dragon%20hacks/` is selected. 
 
 ``` json
 "Dragon Hacks": {
@@ -16,7 +17,6 @@ The following example is the first element if `event/dragon%20hacks/` is selecte
     "name": "Dragon Hacks"
   },
   ```
-  
   You can also select individual querys of hackathons such as the `link` or `id` using the url mapping `/search/name_of_hackathon/value`. For example `search/dragon%20hacks/date` would return  
   ``` json
   January 10th - 11th
