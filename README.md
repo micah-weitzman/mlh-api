@@ -6,7 +6,7 @@ The API is a simple REST made in Flask that utilizes BeautifulSoup. It scrapes i
 The index returns all the events for the current seasons, both in Europe and the US. Appending `s2015` for the current US season, and `eu-2015` for the European, provides all the information for its location respectively. 
 
 The app returns basic information about each event including the offical id, data, link, location, and name.  
-The following example is for `event/dragon%20hacks/` is selected. 
+The mapping for an event is `event/name_of_event/`. In the following example the information is pulled from `event/dragon%20hacks/`.
 
 ``` json
 "Dragon Hacks": {
@@ -17,12 +17,12 @@ The following example is for `event/dragon%20hacks/` is selected.
     "name": "Dragon Hacks"
   },
   ```
-  You can also select individual querys of hackathons such as the `link` or `id` using the url mapping `/search/name_of_hackathon/value`. For example `search/dragon%20hacks/date` would return  
+  You can also select individual querys of hackathons such as the `link` or `id` using the url mapping `/search/name_of_hackathon/value/`. For example `search/dragon%20hacks/date/` would return  
   ``` text
   January 10th - 11th
  ```
  
- or `search/dragon%20hacks/link` would return  
+ or `search/dragon%20hacks/link/` would return  
  ``` text
  http://www.hack-dragon.com
  ```
