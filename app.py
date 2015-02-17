@@ -2,6 +2,7 @@
 from flask import Flask, jsonify
 from bs4 import BeautifulSoup
 import requests, time
+import urllib
 
 app = Flask(__name__)
 
@@ -17,7 +18,7 @@ def request_stuff(season, events):
             pass
         else:
             link_tag = str(event_for.find_all('a'))
-            index = link_tag.find('"') + 1
+            index = link_tag.find('"') +  1
             link = link_tag[index:]
             index = link.find('"')
             link = link[:index]
@@ -46,12 +47,20 @@ def request_stuff(season, events):
             event["name"] = event_head
             event["link"] = link
             event["id"] = event_id
-            events[event_id] = event
+            events[event_head] = event
     
 
+@app.route('/')
+def index():
+    us_event = {}
+    request_stuff("s2015", us_event)
+    eu_event = {}
+    request_stuff("2015-eu", eu_event)
+    event_all = {"us_event":us_event,"eu_event":eu_event}
+    return jsonify(event_all)
 
 
-@app.route('/<string:mlh_season>')
+@app.route('/<string:mlh_season>/')
 def select_season(mlh_season):
     events_all = {}
     while True:
@@ -60,5 +69,36 @@ def select_season(mlh_season):
         # time to wait until refresh
         time.sleep(1800)
 
+@app.route('/event/<string:mlh_event>/')
+def search_event(mlh_event):
+    us_event = {}
+    request_stuff("s2015", us_event)
+    eu_event = {}
+    request_stuff("2015-eu", eu_event)
+    for evnt in us_event:
+        if urllib.unquote(mlh_event.lower()) == evnt.lower():
+            return jsonify(us_event[evnt])
+        else:
+            for i in eu_event:
+                if urllib.unquote(mlh_event.lower()) == i.lower():
+                    return jsonify(eu_event[i])
+
+@app.route('/search/<string:mlh_event>/<string:key_>/')
+
+def search_by_key(mlh_event, key_):
+    us_event = {}
+    request_stuff("s2015", us_event)
+    eu_event = {}
+    request_stuff("2015-eu", eu_event)
+    for evnt in us_event:
+        if urllib.unquote(mlh_event.lower()) == evnt.lower():
+            return us_event[evnt][key_]
+        else:
+            for i in eu_event:
+                if urllib.unquote(mlh_event.lower()) == i.lower():
+                    return eu_event[i][key_]
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001
+    )
