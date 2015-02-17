@@ -1,7 +1,7 @@
-#Unofficial Major Leauge Hacking API
+#Unofficial Major League Hacking API
 
-Welcome to the Unoffical MLH API. This is not the offical API used by MLH, but simply one I made a CodeDay Winter 2015.
-The API is a simple REST made in Flask that utilizes BeautifulSoup. It scrapes information of of [mlh.io](http://mlh.io) and returns it in a neat JSON format. 
+Welcome to the Unoffical MLH API. This is not the offical API used by MLH, but simply one I made at CodeDay Winter 2015.
+The API is a simple REST made in Flask that utilizes BeautifulSoup. It scrapes information off of [mlh.io](http://mlh.io) and returns it in a neat JSON format. 
 
 The index returns all the events for the current seasons, both in Europe and the US. Appending `s2015` for the current US season, and `eu-2015` for the European, provides all the information for its location respectively. 
 
