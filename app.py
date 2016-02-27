@@ -102,5 +102,5 @@ def search_by_key(mlh_event, key_):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=50981
+    app.run(debug=True, port=5001
     )
