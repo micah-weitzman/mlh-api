@@ -3,8 +3,10 @@ from flask import Flask, jsonify
 from bs4 import BeautifulSoup
 import requests, time
 import urllib
+import datetime
 
 app = Flask(__name__)
+year = str(datetime.date.today().year)
 
 def request_stuff(season, events):
     mlh_url = "https://mlh.io/seasons/%s/events" % (season)
@@ -53,9 +55,9 @@ def request_stuff(season, events):
 @app.route('/')
 def index():
     us_event = {}
-    request_stuff("s2015", us_event)
+    request_stuff("s" + year, us_event)
     eu_event = {}
-    request_stuff("2015-eu", eu_event)
+    request_stuff(year+"-eu", eu_event)
     event_all = {"us_event":us_event,"eu_event":eu_event}
     return jsonify(event_all)
 
@@ -72,9 +74,9 @@ def select_season(mlh_season):
 @app.route('/event/<string:mlh_event>/')
 def search_event(mlh_event):
     us_event = {}
-    request_stuff("s2015", us_event)
+    request_stuff("s"+year, us_event)
     eu_event = {}
-    request_stuff("2015-eu", eu_event)
+    request_stuff(year+"-eu", eu_event)
     for evnt in us_event:
         if urllib.unquote(mlh_event.lower()) == evnt.lower():
             return jsonify(us_event[evnt])
@@ -87,9 +89,9 @@ def search_event(mlh_event):
 
 def search_by_key(mlh_event, key_):
     us_event = {}
-    request_stuff("s2015", us_event)
+    request_stuff("s"+year, us_event)
     eu_event = {}
-    request_stuff("2015-eu", eu_event)
+    request_stuff(year+"-eu", eu_event)
     for evnt in us_event:
         if urllib.unquote(mlh_event.lower()) == evnt.lower():
             return us_event[evnt][key_]
@@ -100,5 +102,5 @@ def search_by_key(mlh_event, key_):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001
+    app.run(debug=True, port=50981
     )
