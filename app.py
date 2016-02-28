@@ -57,7 +57,7 @@ def index():
     us_event = {}
     request_stuff("s" + year, us_event)
     eu_event = {}
-    request_stuff(year+"-eu", eu_event)
+    request_stuff("s"+year+"-eu", eu_event)
     event_all = {"us_event":us_event,"eu_event":eu_event}
     return jsonify(event_all)
 
@@ -76,7 +76,7 @@ def search_event(mlh_event):
     us_event = {}
     request_stuff("s"+year, us_event)
     eu_event = {}
-    request_stuff(year+"-eu", eu_event)
+    request_stuff("s"+year+"-eu", eu_event)
     for evnt in us_event:
         if urllib.unquote(mlh_event.lower()) == evnt.lower():
             return jsonify(us_event[evnt])
@@ -91,7 +91,7 @@ def search_by_key(mlh_event, key_):
     us_event = {}
     request_stuff("s"+year, us_event)
     eu_event = {}
-    request_stuff(year+"-eu", eu_event)
+    request_stuff("s"+year+"-eu", eu_event)
     for evnt in us_event:
         if urllib.unquote(mlh_event.lower()) == evnt.lower():
             return us_event[evnt][key_]
@@ -102,5 +102,5 @@ def search_by_key(mlh_event, key_):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001
+    app.run(debug=True, port=50981
     )
