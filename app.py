@@ -37,7 +37,7 @@ def request_stuff(season, events):
             index = event_date.find("<")
             event_date = event_date[:index]
 
-            event_loc = str(event_for.find_all('p')[1])
+            event_loc = str(event_for.find_all('span')[1])
             index = event_loc.find(">") + 1
             event_loc = event_loc[index:]
             index = event_loc.find("<")
