@@ -37,11 +37,21 @@ def request_stuff(season, events):
             index = event_date.find("<")
             event_date = event_date[:index]
 
-            event_loc = str(event_for.find_all('span')[1])
+            #This is for getting the city
+            event_loc = str(event_for.find_all('span'))
             index = event_loc.find(">") + 1
             event_loc = event_loc[index:]
             index = event_loc.find("<")
-            event_loc = event_loc[:index]
+            event_loc_city = event_loc[:index]
+            
+            #This is for getting the state, I added +9 because after it was ending -
+            #- at "</span>, ". +9 just moves the pointer forward.            
+            event_loc = event_loc[index+9:]
+            index = event_loc.find(">") + 1
+            event_loc = event_loc[index:]
+            index = event_loc.find("<")
+            event_loc_state = event_loc[:index]
+            event_loc = event_loc_city+ ", " + event_loc_state
 
             event = {}
             event["location"] = event_loc
