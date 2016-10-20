@@ -24,6 +24,10 @@ def request_stuff(season, events):
             link = link_tag[index:]
             index = link.find('"')
             link = link[:index]
+            
+            img_tag = (event_for.findAll('img'))
+            backgroundImage = img_tag[0]['src']
+            logo = img_tag[1]['src']
 
             event_head = str(event_for.find_all('h3'))
             index = event_head.find(">") + 1
@@ -60,6 +64,9 @@ def request_stuff(season, events):
             event["link"] = link
             event["id"] = event_id
             events[event_head] = event
+            event["image_bg"] = backgroundImage
+            event["image_logo"] = logo
+
     
 
 @app.route('/')
