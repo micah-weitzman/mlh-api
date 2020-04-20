@@ -1,4 +1,4 @@
-#Unofficial Major League Hacking API
+# Unofficial Major League Hacking API
 
 Welcome to the Unoffical MLH API. This is not the offical API used by MLH, but simply one I made at CodeDay Winter 2015.
 The API is a simple REST made in Flask that utilizes BeautifulSoup. It scrapes information off of [mlh.io](http://mlh.io) and returns it in a neat JSON format. 
